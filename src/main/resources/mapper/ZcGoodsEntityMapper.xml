@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniu.pmadmin.dao.ZcGoodsEntityMapper">
+  <resultMap id="BaseResultMap" type="com.feiniu.pmadmin.entity.ZcGoodsEntity">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="SKU_CODE" jdbcType="VARCHAR" property="skuCode" />
+    <result column="SKU_NAME" jdbcType="VARCHAR" property="skuName" />
+    <result column="STORE_ID" jdbcType="VARCHAR" property="storeId" />
+    <result column="SKU_PRICE" jdbcType="DECIMAL" property="skuPrice" />
+    <result column="MEMBER_PRICE" jdbcType="DECIMAL" property="memberPrice" />
+    <result column="COST" jdbcType="DECIMAL" property="cost" />
+    <result column="INS_DT" jdbcType="DATE" property="insDt" />
+    <result column="MOD_DT" jdbcType="DATE" property="modDt" />
+    <result column="INS_USR_SEQ" jdbcType="VARCHAR" property="insUsrSeq" />
+    <result column="MOD_USR_SEQ" jdbcType="VARCHAR" property="modUsrSeq" />
+    <result column="FLAG" jdbcType="DECIMAL" property="flag" />
+    <result column="BUY_VAT" jdbcType="DECIMAL" property="buyVat" />
+    <result column="IS_CONSISTENT" jdbcType="DECIMAL" property="isConsistent" />
+    <result column="ERROR_MSG" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="IS_FRESH" jdbcType="DECIMAL" property="isFresh" />
+    <result column="SELL_VAT" jdbcType="DECIMAL" property="sellVat" />
+    <result column="SUSPEND_SELL" jdbcType="DECIMAL" property="suspendSell" />
+    <result column="RT_STATUS" jdbcType="DECIMAL" property="rtStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SKU_CODE, SKU_NAME, STORE_ID, SKU_PRICE, MEMBER_PRICE, COST, INS_DT, MOD_DT, 
+    INS_USR_SEQ, MOD_USR_SEQ, FLAG, BUY_VAT, IS_CONSISTENT, ERROR_MSG, IS_FRESH, SELL_VAT, 
+    SUSPEND_SELL, RT_STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UCORDWEB.ZC_GOODS
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from UCORDWEB.ZC_GOODS
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.feiniu.pmadmin.entity.ZcGoodsEntity">
+    insert into UCORDWEB.ZC_GOODS (ID, SKU_CODE, SKU_NAME, 
+      STORE_ID, SKU_PRICE, MEMBER_PRICE, 
+      COST, INS_DT, MOD_DT, INS_USR_SEQ, 
+      MOD_USR_SEQ, FLAG, BUY_VAT, 
+      IS_CONSISTENT, ERROR_MSG, IS_FRESH, 
+      SELL_VAT, SUSPEND_SELL, RT_STATUS
+      )
+    values (#{id,jdbcType=DECIMAL}, #{skuCode,jdbcType=VARCHAR}, #{skuName,jdbcType=VARCHAR}, 
+      #{storeId,jdbcType=VARCHAR}, #{skuPrice,jdbcType=DECIMAL}, #{memberPrice,jdbcType=DECIMAL}, 
+      #{cost,jdbcType=DECIMAL}, #{insDt,jdbcType=DATE}, #{modDt,jdbcType=DATE}, #{insUsrSeq,jdbcType=VARCHAR}, 
+      #{modUsrSeq,jdbcType=VARCHAR}, #{flag,jdbcType=DECIMAL}, #{buyVat,jdbcType=DECIMAL}, 
+      #{isConsistent,jdbcType=DECIMAL}, #{errorMsg,jdbcType=VARCHAR}, #{isFresh,jdbcType=DECIMAL}, 
+      #{sellVat,jdbcType=DECIMAL}, #{suspendSell,jdbcType=DECIMAL}, #{rtStatus,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.feiniu.pmadmin.entity.ZcGoodsEntity">
+    insert into UCORDWEB.ZC_GOODS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="skuCode != null">
+        SKU_CODE,
+      </if>
+      <if test="skuName != null">
+        SKU_NAME,
+      </if>
+      <if test="storeId != null">
+        STORE_ID,
+      </if>
+      <if test="skuPrice != null">
+        SKU_PRICE,
+      </if>
+      <if test="memberPrice != null">
+        MEMBER_PRICE,
+      </if>
+      <if test="cost != null">
+        COST,
+      </if>
+      <if test="insDt != null">
+        INS_DT,
+      </if>
+      <if test="modDt != null">
+        MOD_DT,
+      </if>
+      <if test="insUsrSeq != null">
+        INS_USR_SEQ,
+      </if>
+      <if test="modUsrSeq != null">
+        MOD_USR_SEQ,
+      </if>
+      <if test="flag != null">
+        FLAG,
+      </if>
+      <if test="buyVat != null">
+        BUY_VAT,
+      </if>
+      <if test="isConsistent != null">
+        IS_CONSISTENT,
+      </if>
+      <if test="errorMsg != null">
+        ERROR_MSG,
+      </if>
+      <if test="isFresh != null">
+        IS_FRESH,
+      </if>
+      <if test="sellVat != null">
+        SELL_VAT,
+      </if>
+      <if test="suspendSell != null">
+        SUSPEND_SELL,
+      </if>
+      <if test="rtStatus != null">
+        RT_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="skuCode != null">
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null">
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuPrice != null">
+        #{skuPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="memberPrice != null">
+        #{memberPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="insDt != null">
+        #{insDt,jdbcType=DATE},
+      </if>
+      <if test="modDt != null">
+        #{modDt,jdbcType=DATE},
+      </if>
+      <if test="insUsrSeq != null">
+        #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrSeq != null">
+        #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="buyVat != null">
+        #{buyVat,jdbcType=DECIMAL},
+      </if>
+      <if test="isConsistent != null">
+        #{isConsistent,jdbcType=DECIMAL},
+      </if>
+      <if test="errorMsg != null">
+        #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="isFresh != null">
+        #{isFresh,jdbcType=DECIMAL},
+      </if>
+      <if test="sellVat != null">
+        #{sellVat,jdbcType=DECIMAL},
+      </if>
+      <if test="suspendSell != null">
+        #{suspendSell,jdbcType=DECIMAL},
+      </if>
+      <if test="rtStatus != null">
+        #{rtStatus,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.feiniu.pmadmin.entity.ZcGoodsEntity">
+    update UCORDWEB.ZC_GOODS
+    <set>
+      <if test="skuCode != null">
+        SKU_CODE = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null">
+        SKU_NAME = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        STORE_ID = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="skuPrice != null">
+        SKU_PRICE = #{skuPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="memberPrice != null">
+        MEMBER_PRICE = #{memberPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cost != null">
+        COST = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="insDt != null">
+        INS_DT = #{insDt,jdbcType=DATE},
+      </if>
+      <if test="modDt != null">
+        MOD_DT = #{modDt,jdbcType=DATE},
+      </if>
+      <if test="insUsrSeq != null">
+        INS_USR_SEQ = #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrSeq != null">
+        MOD_USR_SEQ = #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        FLAG = #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="buyVat != null">
+        BUY_VAT = #{buyVat,jdbcType=DECIMAL},
+      </if>
+      <if test="isConsistent != null">
+        IS_CONSISTENT = #{isConsistent,jdbcType=DECIMAL},
+      </if>
+      <if test="errorMsg != null">
+        ERROR_MSG = #{errorMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="isFresh != null">
+        IS_FRESH = #{isFresh,jdbcType=DECIMAL},
+      </if>
+      <if test="sellVat != null">
+        SELL_VAT = #{sellVat,jdbcType=DECIMAL},
+      </if>
+      <if test="suspendSell != null">
+        SUSPEND_SELL = #{suspendSell,jdbcType=DECIMAL},
+      </if>
+      <if test="rtStatus != null">
+        RT_STATUS = #{rtStatus,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.ZcGoodsEntity">
+    update UCORDWEB.ZC_GOODS
+    set SKU_CODE = #{skuCode,jdbcType=VARCHAR},
+      SKU_NAME = #{skuName,jdbcType=VARCHAR},
+      STORE_ID = #{storeId,jdbcType=VARCHAR},
+      SKU_PRICE = #{skuPrice,jdbcType=DECIMAL},
+      MEMBER_PRICE = #{memberPrice,jdbcType=DECIMAL},
+      COST = #{cost,jdbcType=DECIMAL},
+      INS_DT = #{insDt,jdbcType=DATE},
+      MOD_DT = #{modDt,jdbcType=DATE},
+      INS_USR_SEQ = #{insUsrSeq,jdbcType=VARCHAR},
+      MOD_USR_SEQ = #{modUsrSeq,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=DECIMAL},
+      BUY_VAT = #{buyVat,jdbcType=DECIMAL},
+      IS_CONSISTENT = #{isConsistent,jdbcType=DECIMAL},
+      ERROR_MSG = #{errorMsg,jdbcType=VARCHAR},
+      IS_FRESH = #{isFresh,jdbcType=DECIMAL},
+      SELL_VAT = #{sellVat,jdbcType=DECIMAL},
+      SUSPEND_SELL = #{suspendSell,jdbcType=DECIMAL},
+      RT_STATUS = #{rtStatus,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

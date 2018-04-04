@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniu.pmadmin.dao.TxdPromItemsEntityMapper">
+  <resultMap id="BaseResultMap" type="com.feiniu.pmadmin.entity.TxdPromItemsEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="zc_id" jdbcType="INTEGER" property="zcId" />
+    <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
+    <result column="promot_no" jdbcType="VARCHAR" property="promotNo" />
+    <result column="promot_class" jdbcType="BIT" property="promotClass" />
+    <result column="promot_level" jdbcType="BIT" property="promotLevel" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="store_id" jdbcType="VARCHAR" property="storeId" />
+    <result column="promot_purchase_price" jdbcType="DECIMAL" property="promotPurchasePrice" />
+    <result column="promot_price" jdbcType="DECIMAL" property="promotPrice" />
+    <result column="promot_suggest_price" jdbcType="DECIMAL" property="promotSuggestPrice" />
+    <result column="promot_start_time" jdbcType="DATE" property="promotStartTime" />
+    <result column="promot_end_time" jdbcType="DATE" property="promotEndTime" />
+    <result column="promot_suggest_start_time" jdbcType="DATE" property="promotSuggestStartTime" />
+    <result column="promot_suggest_end_time" jdbcType="DATE" property="promotSuggestEndTime" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="pay_balance_type" jdbcType="BIT" property="payBalanceType" />
+    <result column="pay_balance" jdbcType="DECIMAL" property="payBalance" />
+    <result column="ins_dt" jdbcType="TIMESTAMP" property="insDt" />
+    <result column="mod_dt" jdbcType="TIMESTAMP" property="modDt" />
+    <result column="ins_usr_seq" jdbcType="VARCHAR" property="insUsrSeq" />
+    <result column="ins_usr_name" jdbcType="VARCHAR" property="insUsrName" />
+    <result column="mod_usr_seq" jdbcType="VARCHAR" property="modUsrSeq" />
+    <result column="mod_usr_name" jdbcType="VARCHAR" property="modUsrName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, zc_id, sku_code, promot_no, promot_class, promot_level, status, store_id, promot_purchase_price, 
+    promot_price, promot_suggest_price, promot_start_time, promot_end_time, promot_suggest_start_time, 
+    promot_suggest_end_time, memo, pay_balance_type, pay_balance, ins_dt, mod_dt, ins_usr_seq, 
+    ins_usr_name, mod_usr_seq, mod_usr_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from txd_prom_items
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from txd_prom_items
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.feiniu.pmadmin.entity.TxdPromItemsEntity">
+    insert into txd_prom_items (id, zc_id, sku_code, 
+      promot_no, promot_class, promot_level, 
+      status, store_id, promot_purchase_price, 
+      promot_price, promot_suggest_price, promot_start_time, 
+      promot_end_time, promot_suggest_start_time, promot_suggest_end_time, 
+      memo, pay_balance_type, pay_balance, 
+      ins_dt, mod_dt, ins_usr_seq, 
+      ins_usr_name, mod_usr_seq, mod_usr_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{zcId,jdbcType=INTEGER}, #{skuCode,jdbcType=VARCHAR}, 
+      #{promotNo,jdbcType=VARCHAR}, #{promotClass,jdbcType=BIT}, #{promotLevel,jdbcType=BIT}, 
+      #{status,jdbcType=BIT}, #{storeId,jdbcType=VARCHAR}, #{promotPurchasePrice,jdbcType=DECIMAL}, 
+      #{promotPrice,jdbcType=DECIMAL}, #{promotSuggestPrice,jdbcType=DECIMAL}, #{promotStartTime,jdbcType=DATE}, 
+      #{promotEndTime,jdbcType=DATE}, #{promotSuggestStartTime,jdbcType=DATE}, #{promotSuggestEndTime,jdbcType=DATE}, 
+      #{memo,jdbcType=VARCHAR}, #{payBalanceType,jdbcType=BIT}, #{payBalance,jdbcType=DECIMAL}, 
+      #{insDt,jdbcType=TIMESTAMP}, #{modDt,jdbcType=TIMESTAMP}, #{insUsrSeq,jdbcType=VARCHAR}, 
+      #{insUsrName,jdbcType=VARCHAR}, #{modUsrSeq,jdbcType=VARCHAR}, #{modUsrName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.feiniu.pmadmin.entity.TxdPromItemsEntity">
+    insert into txd_prom_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="zcId != null">
+        zc_id,
+      </if>
+      <if test="skuCode != null">
+        sku_code,
+      </if>
+      <if test="promotNo != null">
+        promot_no,
+      </if>
+      <if test="promotClass != null">
+        promot_class,
+      </if>
+      <if test="promotLevel != null">
+        promot_level,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="promotPurchasePrice != null">
+        promot_purchase_price,
+      </if>
+      <if test="promotPrice != null">
+        promot_price,
+      </if>
+      <if test="promotSuggestPrice != null">
+        promot_suggest_price,
+      </if>
+      <if test="promotStartTime != null">
+        promot_start_time,
+      </if>
+      <if test="promotEndTime != null">
+        promot_end_time,
+      </if>
+      <if test="promotSuggestStartTime != null">
+        promot_suggest_start_time,
+      </if>
+      <if test="promotSuggestEndTime != null">
+        promot_suggest_end_time,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+      <if test="payBalanceType != null">
+        pay_balance_type,
+      </if>
+      <if test="payBalance != null">
+        pay_balance,
+      </if>
+      <if test="insDt != null">
+        ins_dt,
+      </if>
+      <if test="modDt != null">
+        mod_dt,
+      </if>
+      <if test="insUsrSeq != null">
+        ins_usr_seq,
+      </if>
+      <if test="insUsrName != null">
+        ins_usr_name,
+      </if>
+      <if test="modUsrSeq != null">
+        mod_usr_seq,
+      </if>
+      <if test="modUsrName != null">
+        mod_usr_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="zcId != null">
+        #{zcId,jdbcType=INTEGER},
+      </if>
+      <if test="skuCode != null">
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promotNo != null">
+        #{promotNo,jdbcType=VARCHAR},
+      </if>
+      <if test="promotClass != null">
+        #{promotClass,jdbcType=BIT},
+      </if>
+      <if test="promotLevel != null">
+        #{promotLevel,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="promotPurchasePrice != null">
+        #{promotPurchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotPrice != null">
+        #{promotPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotSuggestPrice != null">
+        #{promotSuggestPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotStartTime != null">
+        #{promotStartTime,jdbcType=DATE},
+      </if>
+      <if test="promotEndTime != null">
+        #{promotEndTime,jdbcType=DATE},
+      </if>
+      <if test="promotSuggestStartTime != null">
+        #{promotSuggestStartTime,jdbcType=DATE},
+      </if>
+      <if test="promotSuggestEndTime != null">
+        #{promotSuggestEndTime,jdbcType=DATE},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="payBalanceType != null">
+        #{payBalanceType,jdbcType=BIT},
+      </if>
+      <if test="payBalance != null">
+        #{payBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="insDt != null">
+        #{insDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDt != null">
+        #{modDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUsrSeq != null">
+        #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="insUsrName != null">
+        #{insUsrName,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrSeq != null">
+        #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrName != null">
+        #{modUsrName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.feiniu.pmadmin.entity.TxdPromItemsEntity">
+    update txd_prom_items
+    <set>
+      <if test="zcId != null">
+        zc_id = #{zcId,jdbcType=INTEGER},
+      </if>
+      <if test="skuCode != null">
+        sku_code = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="promotNo != null">
+        promot_no = #{promotNo,jdbcType=VARCHAR},
+      </if>
+      <if test="promotClass != null">
+        promot_class = #{promotClass,jdbcType=BIT},
+      </if>
+      <if test="promotLevel != null">
+        promot_level = #{promotLevel,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="promotPurchasePrice != null">
+        promot_purchase_price = #{promotPurchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotPrice != null">
+        promot_price = #{promotPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotSuggestPrice != null">
+        promot_suggest_price = #{promotSuggestPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotStartTime != null">
+        promot_start_time = #{promotStartTime,jdbcType=DATE},
+      </if>
+      <if test="promotEndTime != null">
+        promot_end_time = #{promotEndTime,jdbcType=DATE},
+      </if>
+      <if test="promotSuggestStartTime != null">
+        promot_suggest_start_time = #{promotSuggestStartTime,jdbcType=DATE},
+      </if>
+      <if test="promotSuggestEndTime != null">
+        promot_suggest_end_time = #{promotSuggestEndTime,jdbcType=DATE},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="payBalanceType != null">
+        pay_balance_type = #{payBalanceType,jdbcType=BIT},
+      </if>
+      <if test="payBalance != null">
+        pay_balance = #{payBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="insDt != null">
+        ins_dt = #{insDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDt != null">
+        mod_dt = #{modDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUsrSeq != null">
+        ins_usr_seq = #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="insUsrName != null">
+        ins_usr_name = #{insUsrName,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrSeq != null">
+        mod_usr_seq = #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrName != null">
+        mod_usr_name = #{modUsrName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.TxdPromItemsEntity">
+    update txd_prom_items
+    set zc_id = #{zcId,jdbcType=INTEGER},
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      promot_no = #{promotNo,jdbcType=VARCHAR},
+      promot_class = #{promotClass,jdbcType=BIT},
+      promot_level = #{promotLevel,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      store_id = #{storeId,jdbcType=VARCHAR},
+      promot_purchase_price = #{promotPurchasePrice,jdbcType=DECIMAL},
+      promot_price = #{promotPrice,jdbcType=DECIMAL},
+      promot_suggest_price = #{promotSuggestPrice,jdbcType=DECIMAL},
+      promot_start_time = #{promotStartTime,jdbcType=DATE},
+      promot_end_time = #{promotEndTime,jdbcType=DATE},
+      promot_suggest_start_time = #{promotSuggestStartTime,jdbcType=DATE},
+      promot_suggest_end_time = #{promotSuggestEndTime,jdbcType=DATE},
+      memo = #{memo,jdbcType=VARCHAR},
+      pay_balance_type = #{payBalanceType,jdbcType=BIT},
+      pay_balance = #{payBalance,jdbcType=DECIMAL},
+      ins_dt = #{insDt,jdbcType=TIMESTAMP},
+      mod_dt = #{modDt,jdbcType=TIMESTAMP},
+      ins_usr_seq = #{insUsrSeq,jdbcType=VARCHAR},
+      ins_usr_name = #{insUsrName,jdbcType=VARCHAR},
+      mod_usr_seq = #{modUsrSeq,jdbcType=VARCHAR},
+      mod_usr_name = #{modUsrName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      @project https://github.com/itfsw/mybatis-generator-plugin
+    -->
+    insert into txd_prom_items
+    (id, zc_id, sku_code, promot_no, promot_class, promot_level, status, store_id, promot_purchase_price, 
+      promot_price, promot_suggest_price, promot_start_time, promot_end_time, promot_suggest_start_time, 
+      promot_suggest_end_time, memo, pay_balance_type, pay_balance, ins_dt, mod_dt, ins_usr_seq, 
+      ins_usr_name, mod_usr_seq, mod_usr_name)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=INTEGER}, #{item.zcId,jdbcType=INTEGER}, #{item.skuCode,jdbcType=VARCHAR}, 
+        #{item.promotNo,jdbcType=VARCHAR}, #{item.promotClass,jdbcType=BIT}, #{item.promotLevel,jdbcType=BIT}, 
+        #{item.status,jdbcType=BIT}, #{item.storeId,jdbcType=VARCHAR}, #{item.promotPurchasePrice,jdbcType=DECIMAL}, 
+        #{item.promotPrice,jdbcType=DECIMAL}, #{item.promotSuggestPrice,jdbcType=DECIMAL}, 
+        #{item.promotStartTime,jdbcType=DATE}, #{item.promotEndTime,jdbcType=DATE}, #{item.promotSuggestStartTime,jdbcType=DATE}, 
+        #{item.promotSuggestEndTime,jdbcType=DATE}, #{item.memo,jdbcType=VARCHAR}, #{item.payBalanceType,jdbcType=BIT}, 
+        #{item.payBalance,jdbcType=DECIMAL}, #{item.insDt,jdbcType=TIMESTAMP}, #{item.modDt,jdbcType=TIMESTAMP}, 
+        #{item.insUsrSeq,jdbcType=VARCHAR}, #{item.insUsrName,jdbcType=VARCHAR}, #{item.modUsrSeq,jdbcType=VARCHAR}, 
+        #{item.modUsrName,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+      This element is automatically generated by MyBatis Generator, do not modify.
+      @project https://github.com/itfsw/mybatis-generator-plugin
+    -->
+    insert into txd_prom_items (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.value}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'id' == column.value">
+          #{item.id,jdbcType=INTEGER}
+        </if>
+        <if test="'zc_id' == column.value">
+          #{item.zcId,jdbcType=INTEGER}
+        </if>
+        <if test="'sku_code' == column.value">
+          #{item.skuCode,jdbcType=VARCHAR}
+        </if>
+        <if test="'promot_no' == column.value">
+          #{item.promotNo,jdbcType=VARCHAR}
+        </if>
+        <if test="'promot_class' == column.value">
+          #{item.promotClass,jdbcType=BIT}
+        </if>
+        <if test="'promot_level' == column.value">
+          #{item.promotLevel,jdbcType=BIT}
+        </if>
+        <if test="'status' == column.value">
+          #{item.status,jdbcType=BIT}
+        </if>
+        <if test="'store_id' == column.value">
+          #{item.storeId,jdbcType=VARCHAR}
+        </if>
+        <if test="'promot_purchase_price' == column.value">
+          #{item.promotPurchasePrice,jdbcType=DECIMAL}
+        </if>
+        <if test="'promot_price' == column.value">
+          #{item.promotPrice,jdbcType=DECIMAL}
+        </if>
+        <if test="'promot_suggest_price' == column.value">
+          #{item.promotSuggestPrice,jdbcType=DECIMAL}
+        </if>
+        <if test="'promot_start_time' == column.value">
+          #{item.promotStartTime,jdbcType=DATE}
+        </if>
+        <if test="'promot_end_time' == column.value">
+          #{item.promotEndTime,jdbcType=DATE}
+        </if>
+        <if test="'promot_suggest_start_time' == column.value">
+          #{item.promotSuggestStartTime,jdbcType=DATE}
+        </if>
+        <if test="'promot_suggest_end_time' == column.value">
+          #{item.promotSuggestEndTime,jdbcType=DATE}
+        </if>
+        <if test="'memo' == column.value">
+          #{item.memo,jdbcType=VARCHAR}
+        </if>
+        <if test="'pay_balance_type' == column.value">
+          #{item.payBalanceType,jdbcType=BIT}
+        </if>
+        <if test="'pay_balance' == column.value">
+          #{item.payBalance,jdbcType=DECIMAL}
+        </if>
+        <if test="'ins_dt' == column.value">
+          #{item.insDt,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'mod_dt' == column.value">
+          #{item.modDt,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'ins_usr_seq' == column.value">
+          #{item.insUsrSeq,jdbcType=VARCHAR}
+        </if>
+        <if test="'ins_usr_name' == column.value">
+          #{item.insUsrName,jdbcType=VARCHAR}
+        </if>
+        <if test="'mod_usr_seq' == column.value">
+          #{item.modUsrSeq,jdbcType=VARCHAR}
+        </if>
+        <if test="'mod_usr_name' == column.value">
+          #{item.modUsrName,jdbcType=VARCHAR}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+</mapper>

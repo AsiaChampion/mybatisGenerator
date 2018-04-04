@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniu.pmadmin.dao.IPromItemsDao">
+  <resultMap id="BaseResultMap" type="com.feiniu.pmadmin.entity.PromItemsEntity">
+    <id column="PROMOTION_NO" jdbcType="DECIMAL" property="promotionNo" />
+    <id column="ITEM_NO" jdbcType="DECIMAL" property="itemNo" />
+    <result column="NORMAL_SELL_PRICE" jdbcType="DECIMAL" property="normalSellPrice" />
+    <result column="P_SELL_PRICE" jdbcType="DECIMAL" property="pSellPrice" />
+    <result column="C_SELL_PRICE" jdbcType="DECIMAL" property="cSellPrice" />
+    <result column="BUY_BEGIN_DATE" jdbcType="DATE" property="buyBeginDate" />
+    <result column="BUY_END_DATE" jdbcType="DATE" property="buyEndDate" />
+    <result column="SALES_INDEX" jdbcType="VARCHAR" property="salesIndex" />
+    <result column="SUPPLY_QTY" jdbcType="DECIMAL" property="supplyQty" />
+    <result column="LIMIT_QTY" jdbcType="DECIMAL" property="limitQty" />
+    <result column="PROM_CLASS" jdbcType="DECIMAL" property="promClass" />
+    <result column="PROM_LEVEL" jdbcType="DECIMAL" property="promLevel" />
+    <result column="MEMO" jdbcType="VARCHAR" property="memo" />
+    <result column="CHANGED_DATE" jdbcType="DATE" property="changedDate" />
+    <result column="DAY1" jdbcType="DECIMAL" property="day1" />
+    <result column="DAY2" jdbcType="DECIMAL" property="day2" />
+    <result column="DAY3" jdbcType="DECIMAL" property="day3" />
+    <result column="DAY4" jdbcType="DECIMAL" property="day4" />
+    <result column="DAY5" jdbcType="DECIMAL" property="day5" />
+    <result column="DAY6" jdbcType="DECIMAL" property="day6" />
+    <result column="DAY7" jdbcType="DECIMAL" property="day7" />
+    <result column="DAY8" jdbcType="DECIMAL" property="day8" />
+    <result column="DAY9" jdbcType="DECIMAL" property="day9" />
+    <result column="DAY10" jdbcType="DECIMAL" property="day10" />
+    <result column="DAY11" jdbcType="DECIMAL" property="day11" />
+    <result column="DAY12" jdbcType="DECIMAL" property="day12" />
+    <result column="DAY13" jdbcType="DECIMAL" property="day13" />
+    <result column="DAY14" jdbcType="DECIMAL" property="day14" />
+    <result column="SALES_QTY" jdbcType="DECIMAL" property="salesQty" />
+    <result column="SALES_COST" jdbcType="DECIMAL" property="salesCost" />
+    <result column="SALES_AMNT" jdbcType="DECIMAL" property="salesAmnt" />
+    <result column="SALES_QTY_C" jdbcType="DECIMAL" property="salesQtyC" />
+    <result column="SALES_COST_C" jdbcType="DECIMAL" property="salesCostC" />
+    <result column="SALES_AMNT_C" jdbcType="DECIMAL" property="salesAmntC" />
+    <result column="BUY_PRICE" jdbcType="DECIMAL" property="buyPrice" />
+    <result column="SALES_TD" jdbcType="DECIMAL" property="salesTd" />
+    <result column="SALES_BUDGET" jdbcType="DECIMAL" property="salesBudget" />
+    <result column="FUT_DATE_SELL_PR" jdbcType="DATE" property="futDateSellPr" />
+    <result column="FUT_PROM_LEVEL" jdbcType="DECIMAL" property="futPromLevel" />
+    <result column="FUT_SELL_PRICE" jdbcType="DECIMAL" property="futSellPrice" />
+    <result column="ST_SALES_BUDGET" jdbcType="DECIMAL" property="stSalesBudget" />
+    <result column="ST_DEMO_QTY" jdbcType="DECIMAL" property="stDemoQty" />
+    <result column="DISPLAY_POSITION" jdbcType="DECIMAL" property="displayPosition" />
+    <result column="CREATED_DATE" jdbcType="DATE" property="createdDate" />
+    <result column="PRICE_FLAG" jdbcType="DECIMAL" property="priceFlag" />
+    <result column="NORMAL_BUY_PRICE" jdbcType="DECIMAL" property="normalBuyPrice" />
+    <result column="ORDER_FLAG" jdbcType="DECIMAL" property="orderFlag" />
+    <result column="BEGIN_DATE" jdbcType="DATE" property="beginDate" />
+    <result column="END_DATE" jdbcType="DATE" property="endDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PROMOTION_NO, ITEM_NO, NORMAL_SELL_PRICE, P_SELL_PRICE, C_SELL_PRICE, BUY_BEGIN_DATE, 
+    BUY_END_DATE, SALES_INDEX, SUPPLY_QTY, LIMIT_QTY, PROM_CLASS, PROM_LEVEL, MEMO, CHANGED_DATE, 
+    DAY1, DAY2, DAY3, DAY4, DAY5, DAY6, DAY7, DAY8, DAY9, DAY10, DAY11, DAY12, DAY13, 
+    DAY14, SALES_QTY, SALES_COST, SALES_AMNT, SALES_QTY_C, SALES_COST_C, SALES_AMNT_C, 
+    BUY_PRICE, SALES_TD, SALES_BUDGET, FUT_DATE_SELL_PR, FUT_PROM_LEVEL, FUT_SELL_PRICE, 
+    ST_SALES_BUDGET, ST_DEMO_QTY, DISPLAY_POSITION, CREATED_DATE, PRICE_FLAG, NORMAL_BUY_PRICE, 
+    ORDER_FLAG, BEGIN_DATE, END_DATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.PromItemsEntityKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STDBA.PROM_ITEMS
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+      and ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.PromItemsEntityKey">
+    delete from STDBA.PROM_ITEMS
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+      and ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.feiniu.pmadmin.entity.PromItemsEntity">
+    insert into STDBA.PROM_ITEMS (PROMOTION_NO, ITEM_NO, NORMAL_SELL_PRICE, 
+      P_SELL_PRICE, C_SELL_PRICE, BUY_BEGIN_DATE, 
+      BUY_END_DATE, SALES_INDEX, SUPPLY_QTY, 
+      LIMIT_QTY, PROM_CLASS, PROM_LEVEL, 
+      MEMO, CHANGED_DATE, DAY1, 
+      DAY2, DAY3, DAY4, DAY5, 
+      DAY6, DAY7, DAY8, DAY9, 
+      DAY10, DAY11, DAY12, 
+      DAY13, DAY14, SALES_QTY, 
+      SALES_COST, SALES_AMNT, SALES_QTY_C, 
+      SALES_COST_C, SALES_AMNT_C, BUY_PRICE, 
+      SALES_TD, SALES_BUDGET, FUT_DATE_SELL_PR, 
+      FUT_PROM_LEVEL, FUT_SELL_PRICE, ST_SALES_BUDGET, 
+      ST_DEMO_QTY, DISPLAY_POSITION, CREATED_DATE, 
+      PRICE_FLAG, NORMAL_BUY_PRICE, ORDER_FLAG, 
+      BEGIN_DATE, END_DATE)
+    values (#{promotionNo,jdbcType=DECIMAL}, #{itemNo,jdbcType=DECIMAL}, #{normalSellPrice,jdbcType=DECIMAL}, 
+      #{pSellPrice,jdbcType=DECIMAL}, #{cSellPrice,jdbcType=DECIMAL}, #{buyBeginDate,jdbcType=DATE}, 
+      #{buyEndDate,jdbcType=DATE}, #{salesIndex,jdbcType=VARCHAR}, #{supplyQty,jdbcType=DECIMAL}, 
+      #{limitQty,jdbcType=DECIMAL}, #{promClass,jdbcType=DECIMAL}, #{promLevel,jdbcType=DECIMAL}, 
+      #{memo,jdbcType=VARCHAR}, #{changedDate,jdbcType=DATE}, #{day1,jdbcType=DECIMAL}, 
+      #{day2,jdbcType=DECIMAL}, #{day3,jdbcType=DECIMAL}, #{day4,jdbcType=DECIMAL}, #{day5,jdbcType=DECIMAL}, 
+      #{day6,jdbcType=DECIMAL}, #{day7,jdbcType=DECIMAL}, #{day8,jdbcType=DECIMAL}, #{day9,jdbcType=DECIMAL}, 
+      #{day10,jdbcType=DECIMAL}, #{day11,jdbcType=DECIMAL}, #{day12,jdbcType=DECIMAL}, 
+      #{day13,jdbcType=DECIMAL}, #{day14,jdbcType=DECIMAL}, #{salesQty,jdbcType=DECIMAL}, 
+      #{salesCost,jdbcType=DECIMAL}, #{salesAmnt,jdbcType=DECIMAL}, #{salesQtyC,jdbcType=DECIMAL}, 
+      #{salesCostC,jdbcType=DECIMAL}, #{salesAmntC,jdbcType=DECIMAL}, #{buyPrice,jdbcType=DECIMAL}, 
+      #{salesTd,jdbcType=DECIMAL}, #{salesBudget,jdbcType=DECIMAL}, #{futDateSellPr,jdbcType=DATE}, 
+      #{futPromLevel,jdbcType=DECIMAL}, #{futSellPrice,jdbcType=DECIMAL}, #{stSalesBudget,jdbcType=DECIMAL}, 
+      #{stDemoQty,jdbcType=DECIMAL}, #{displayPosition,jdbcType=DECIMAL}, #{createdDate,jdbcType=DATE}, 
+      #{priceFlag,jdbcType=DECIMAL}, #{normalBuyPrice,jdbcType=DECIMAL}, #{orderFlag,jdbcType=DECIMAL}, 
+      #{beginDate,jdbcType=DATE}, #{endDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.feiniu.pmadmin.entity.PromItemsEntity">
+    insert into STDBA.PROM_ITEMS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="promotionNo != null">
+        PROMOTION_NO,
+      </if>
+      <if test="itemNo != null">
+        ITEM_NO,
+      </if>
+      <if test="normalSellPrice != null">
+        NORMAL_SELL_PRICE,
+      </if>
+      <if test="pSellPrice != null">
+        P_SELL_PRICE,
+      </if>
+      <if test="cSellPrice != null">
+        C_SELL_PRICE,
+      </if>
+      <if test="buyBeginDate != null">
+        BUY_BEGIN_DATE,
+      </if>
+      <if test="buyEndDate != null">
+        BUY_END_DATE,
+      </if>
+      <if test="salesIndex != null">
+        SALES_INDEX,
+      </if>
+      <if test="supplyQty != null">
+        SUPPLY_QTY,
+      </if>
+      <if test="limitQty != null">
+        LIMIT_QTY,
+      </if>
+      <if test="promClass != null">
+        PROM_CLASS,
+      </if>
+      <if test="promLevel != null">
+        PROM_LEVEL,
+      </if>
+      <if test="memo != null">
+        MEMO,
+      </if>
+      <if test="changedDate != null">
+        CHANGED_DATE,
+      </if>
+      <if test="day1 != null">
+        DAY1,
+      </if>
+      <if test="day2 != null">
+        DAY2,
+      </if>
+      <if test="day3 != null">
+        DAY3,
+      </if>
+      <if test="day4 != null">
+        DAY4,
+      </if>
+      <if test="day5 != null">
+        DAY5,
+      </if>
+      <if test="day6 != null">
+        DAY6,
+      </if>
+      <if test="day7 != null">
+        DAY7,
+      </if>
+      <if test="day8 != null">
+        DAY8,
+      </if>
+      <if test="day9 != null">
+        DAY9,
+      </if>
+      <if test="day10 != null">
+        DAY10,
+      </if>
+      <if test="day11 != null">
+        DAY11,
+      </if>
+      <if test="day12 != null">
+        DAY12,
+      </if>
+      <if test="day13 != null">
+        DAY13,
+      </if>
+      <if test="day14 != null">
+        DAY14,
+      </if>
+      <if test="salesQty != null">
+        SALES_QTY,
+      </if>
+      <if test="salesCost != null">
+        SALES_COST,
+      </if>
+      <if test="salesAmnt != null">
+        SALES_AMNT,
+      </if>
+      <if test="salesQtyC != null">
+        SALES_QTY_C,
+      </if>
+      <if test="salesCostC != null">
+        SALES_COST_C,
+      </if>
+      <if test="salesAmntC != null">
+        SALES_AMNT_C,
+      </if>
+      <if test="buyPrice != null">
+        BUY_PRICE,
+      </if>
+      <if test="salesTd != null">
+        SALES_TD,
+      </if>
+      <if test="salesBudget != null">
+        SALES_BUDGET,
+      </if>
+      <if test="futDateSellPr != null">
+        FUT_DATE_SELL_PR,
+      </if>
+      <if test="futPromLevel != null">
+        FUT_PROM_LEVEL,
+      </if>
+      <if test="futSellPrice != null">
+        FUT_SELL_PRICE,
+      </if>
+      <if test="stSalesBudget != null">
+        ST_SALES_BUDGET,
+      </if>
+      <if test="stDemoQty != null">
+        ST_DEMO_QTY,
+      </if>
+      <if test="displayPosition != null">
+        DISPLAY_POSITION,
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE,
+      </if>
+      <if test="priceFlag != null">
+        PRICE_FLAG,
+      </if>
+      <if test="normalBuyPrice != null">
+        NORMAL_BUY_PRICE,
+      </if>
+      <if test="orderFlag != null">
+        ORDER_FLAG,
+      </if>
+      <if test="beginDate != null">
+        BEGIN_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="promotionNo != null">
+        #{promotionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="itemNo != null">
+        #{itemNo,jdbcType=DECIMAL},
+      </if>
+      <if test="normalSellPrice != null">
+        #{normalSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="pSellPrice != null">
+        #{pSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cSellPrice != null">
+        #{cSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyBeginDate != null">
+        #{buyBeginDate,jdbcType=DATE},
+      </if>
+      <if test="buyEndDate != null">
+        #{buyEndDate,jdbcType=DATE},
+      </if>
+      <if test="salesIndex != null">
+        #{salesIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyQty != null">
+        #{supplyQty,jdbcType=DECIMAL},
+      </if>
+      <if test="limitQty != null">
+        #{limitQty,jdbcType=DECIMAL},
+      </if>
+      <if test="promClass != null">
+        #{promClass,jdbcType=DECIMAL},
+      </if>
+      <if test="promLevel != null">
+        #{promLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="changedDate != null">
+        #{changedDate,jdbcType=DATE},
+      </if>
+      <if test="day1 != null">
+        #{day1,jdbcType=DECIMAL},
+      </if>
+      <if test="day2 != null">
+        #{day2,jdbcType=DECIMAL},
+      </if>
+      <if test="day3 != null">
+        #{day3,jdbcType=DECIMAL},
+      </if>
+      <if test="day4 != null">
+        #{day4,jdbcType=DECIMAL},
+      </if>
+      <if test="day5 != null">
+        #{day5,jdbcType=DECIMAL},
+      </if>
+      <if test="day6 != null">
+        #{day6,jdbcType=DECIMAL},
+      </if>
+      <if test="day7 != null">
+        #{day7,jdbcType=DECIMAL},
+      </if>
+      <if test="day8 != null">
+        #{day8,jdbcType=DECIMAL},
+      </if>
+      <if test="day9 != null">
+        #{day9,jdbcType=DECIMAL},
+      </if>
+      <if test="day10 != null">
+        #{day10,jdbcType=DECIMAL},
+      </if>
+      <if test="day11 != null">
+        #{day11,jdbcType=DECIMAL},
+      </if>
+      <if test="day12 != null">
+        #{day12,jdbcType=DECIMAL},
+      </if>
+      <if test="day13 != null">
+        #{day13,jdbcType=DECIMAL},
+      </if>
+      <if test="day14 != null">
+        #{day14,jdbcType=DECIMAL},
+      </if>
+      <if test="salesQty != null">
+        #{salesQty,jdbcType=DECIMAL},
+      </if>
+      <if test="salesCost != null">
+        #{salesCost,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmnt != null">
+        #{salesAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="salesQtyC != null">
+        #{salesQtyC,jdbcType=DECIMAL},
+      </if>
+      <if test="salesCostC != null">
+        #{salesCostC,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmntC != null">
+        #{salesAmntC,jdbcType=DECIMAL},
+      </if>
+      <if test="buyPrice != null">
+        #{buyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="salesTd != null">
+        #{salesTd,jdbcType=DECIMAL},
+      </if>
+      <if test="salesBudget != null">
+        #{salesBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="futDateSellPr != null">
+        #{futDateSellPr,jdbcType=DATE},
+      </if>
+      <if test="futPromLevel != null">
+        #{futPromLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="futSellPrice != null">
+        #{futSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="stSalesBudget != null">
+        #{stSalesBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="stDemoQty != null">
+        #{stDemoQty,jdbcType=DECIMAL},
+      </if>
+      <if test="displayPosition != null">
+        #{displayPosition,jdbcType=DECIMAL},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="priceFlag != null">
+        #{priceFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="normalBuyPrice != null">
+        #{normalBuyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFlag != null">
+        #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="beginDate != null">
+        #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.feiniu.pmadmin.entity.PromItemsEntity">
+    update STDBA.PROM_ITEMS
+    <set>
+      <if test="normalSellPrice != null">
+        NORMAL_SELL_PRICE = #{normalSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="pSellPrice != null">
+        P_SELL_PRICE = #{pSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="cSellPrice != null">
+        C_SELL_PRICE = #{cSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="buyBeginDate != null">
+        BUY_BEGIN_DATE = #{buyBeginDate,jdbcType=DATE},
+      </if>
+      <if test="buyEndDate != null">
+        BUY_END_DATE = #{buyEndDate,jdbcType=DATE},
+      </if>
+      <if test="salesIndex != null">
+        SALES_INDEX = #{salesIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="supplyQty != null">
+        SUPPLY_QTY = #{supplyQty,jdbcType=DECIMAL},
+      </if>
+      <if test="limitQty != null">
+        LIMIT_QTY = #{limitQty,jdbcType=DECIMAL},
+      </if>
+      <if test="promClass != null">
+        PROM_CLASS = #{promClass,jdbcType=DECIMAL},
+      </if>
+      <if test="promLevel != null">
+        PROM_LEVEL = #{promLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="changedDate != null">
+        CHANGED_DATE = #{changedDate,jdbcType=DATE},
+      </if>
+      <if test="day1 != null">
+        DAY1 = #{day1,jdbcType=DECIMAL},
+      </if>
+      <if test="day2 != null">
+        DAY2 = #{day2,jdbcType=DECIMAL},
+      </if>
+      <if test="day3 != null">
+        DAY3 = #{day3,jdbcType=DECIMAL},
+      </if>
+      <if test="day4 != null">
+        DAY4 = #{day4,jdbcType=DECIMAL},
+      </if>
+      <if test="day5 != null">
+        DAY5 = #{day5,jdbcType=DECIMAL},
+      </if>
+      <if test="day6 != null">
+        DAY6 = #{day6,jdbcType=DECIMAL},
+      </if>
+      <if test="day7 != null">
+        DAY7 = #{day7,jdbcType=DECIMAL},
+      </if>
+      <if test="day8 != null">
+        DAY8 = #{day8,jdbcType=DECIMAL},
+      </if>
+      <if test="day9 != null">
+        DAY9 = #{day9,jdbcType=DECIMAL},
+      </if>
+      <if test="day10 != null">
+        DAY10 = #{day10,jdbcType=DECIMAL},
+      </if>
+      <if test="day11 != null">
+        DAY11 = #{day11,jdbcType=DECIMAL},
+      </if>
+      <if test="day12 != null">
+        DAY12 = #{day12,jdbcType=DECIMAL},
+      </if>
+      <if test="day13 != null">
+        DAY13 = #{day13,jdbcType=DECIMAL},
+      </if>
+      <if test="day14 != null">
+        DAY14 = #{day14,jdbcType=DECIMAL},
+      </if>
+      <if test="salesQty != null">
+        SALES_QTY = #{salesQty,jdbcType=DECIMAL},
+      </if>
+      <if test="salesCost != null">
+        SALES_COST = #{salesCost,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmnt != null">
+        SALES_AMNT = #{salesAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="salesQtyC != null">
+        SALES_QTY_C = #{salesQtyC,jdbcType=DECIMAL},
+      </if>
+      <if test="salesCostC != null">
+        SALES_COST_C = #{salesCostC,jdbcType=DECIMAL},
+      </if>
+      <if test="salesAmntC != null">
+        SALES_AMNT_C = #{salesAmntC,jdbcType=DECIMAL},
+      </if>
+      <if test="buyPrice != null">
+        BUY_PRICE = #{buyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="salesTd != null">
+        SALES_TD = #{salesTd,jdbcType=DECIMAL},
+      </if>
+      <if test="salesBudget != null">
+        SALES_BUDGET = #{salesBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="futDateSellPr != null">
+        FUT_DATE_SELL_PR = #{futDateSellPr,jdbcType=DATE},
+      </if>
+      <if test="futPromLevel != null">
+        FUT_PROM_LEVEL = #{futPromLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="futSellPrice != null">
+        FUT_SELL_PRICE = #{futSellPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="stSalesBudget != null">
+        ST_SALES_BUDGET = #{stSalesBudget,jdbcType=DECIMAL},
+      </if>
+      <if test="stDemoQty != null">
+        ST_DEMO_QTY = #{stDemoQty,jdbcType=DECIMAL},
+      </if>
+      <if test="displayPosition != null">
+        DISPLAY_POSITION = #{displayPosition,jdbcType=DECIMAL},
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE = #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="priceFlag != null">
+        PRICE_FLAG = #{priceFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="normalBuyPrice != null">
+        NORMAL_BUY_PRICE = #{normalBuyPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="orderFlag != null">
+        ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL},
+      </if>
+      <if test="beginDate != null">
+        BEGIN_DATE = #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=DATE},
+      </if>
+    </set>
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+      and ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.PromItemsEntity">
+    update STDBA.PROM_ITEMS
+    set NORMAL_SELL_PRICE = #{normalSellPrice,jdbcType=DECIMAL},
+      P_SELL_PRICE = #{pSellPrice,jdbcType=DECIMAL},
+      C_SELL_PRICE = #{cSellPrice,jdbcType=DECIMAL},
+      BUY_BEGIN_DATE = #{buyBeginDate,jdbcType=DATE},
+      BUY_END_DATE = #{buyEndDate,jdbcType=DATE},
+      SALES_INDEX = #{salesIndex,jdbcType=VARCHAR},
+      SUPPLY_QTY = #{supplyQty,jdbcType=DECIMAL},
+      LIMIT_QTY = #{limitQty,jdbcType=DECIMAL},
+      PROM_CLASS = #{promClass,jdbcType=DECIMAL},
+      PROM_LEVEL = #{promLevel,jdbcType=DECIMAL},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      CHANGED_DATE = #{changedDate,jdbcType=DATE},
+      DAY1 = #{day1,jdbcType=DECIMAL},
+      DAY2 = #{day2,jdbcType=DECIMAL},
+      DAY3 = #{day3,jdbcType=DECIMAL},
+      DAY4 = #{day4,jdbcType=DECIMAL},
+      DAY5 = #{day5,jdbcType=DECIMAL},
+      DAY6 = #{day6,jdbcType=DECIMAL},
+      DAY7 = #{day7,jdbcType=DECIMAL},
+      DAY8 = #{day8,jdbcType=DECIMAL},
+      DAY9 = #{day9,jdbcType=DECIMAL},
+      DAY10 = #{day10,jdbcType=DECIMAL},
+      DAY11 = #{day11,jdbcType=DECIMAL},
+      DAY12 = #{day12,jdbcType=DECIMAL},
+      DAY13 = #{day13,jdbcType=DECIMAL},
+      DAY14 = #{day14,jdbcType=DECIMAL},
+      SALES_QTY = #{salesQty,jdbcType=DECIMAL},
+      SALES_COST = #{salesCost,jdbcType=DECIMAL},
+      SALES_AMNT = #{salesAmnt,jdbcType=DECIMAL},
+      SALES_QTY_C = #{salesQtyC,jdbcType=DECIMAL},
+      SALES_COST_C = #{salesCostC,jdbcType=DECIMAL},
+      SALES_AMNT_C = #{salesAmntC,jdbcType=DECIMAL},
+      BUY_PRICE = #{buyPrice,jdbcType=DECIMAL},
+      SALES_TD = #{salesTd,jdbcType=DECIMAL},
+      SALES_BUDGET = #{salesBudget,jdbcType=DECIMAL},
+      FUT_DATE_SELL_PR = #{futDateSellPr,jdbcType=DATE},
+      FUT_PROM_LEVEL = #{futPromLevel,jdbcType=DECIMAL},
+      FUT_SELL_PRICE = #{futSellPrice,jdbcType=DECIMAL},
+      ST_SALES_BUDGET = #{stSalesBudget,jdbcType=DECIMAL},
+      ST_DEMO_QTY = #{stDemoQty,jdbcType=DECIMAL},
+      DISPLAY_POSITION = #{displayPosition,jdbcType=DECIMAL},
+      CREATED_DATE = #{createdDate,jdbcType=DATE},
+      PRICE_FLAG = #{priceFlag,jdbcType=DECIMAL},
+      NORMAL_BUY_PRICE = #{normalBuyPrice,jdbcType=DECIMAL},
+      ORDER_FLAG = #{orderFlag,jdbcType=DECIMAL},
+      BEGIN_DATE = #{beginDate,jdbcType=DATE},
+      END_DATE = #{endDate,jdbcType=DATE}
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+      and ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

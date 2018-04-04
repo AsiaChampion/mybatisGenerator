@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniu.pmadmin.dao.ZcStoreItemEntityMapper">
+  <resultMap id="BaseResultMap" type="com.feiniu.pmadmin.entity.ZcStoreItemEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
+    <result column="sku_name" jdbcType="VARCHAR" property="skuName" />
+    <result column="rt_category" jdbcType="VARCHAR" property="rtCategory" />
+    <result column="supplier_no" jdbcType="VARCHAR" property="supplierNo" />
+    <result column="dc_supplier_no" jdbcType="VARCHAR" property="dcSupplierNo" />
+    <result column="return_flag" jdbcType="BIT" property="returnFlag" />
+    <result column="is_artifical_quotation" jdbcType="BIT" property="isArtificalQuotation" />
+    <result column="is_dc_item" jdbcType="BIT" property="isDcItem" />
+    <result column="dc_attr_value" jdbcType="TINYINT" property="dcAttrValue" />
+    <result column="dsp_attr_value" jdbcType="TINYINT" property="dspAttrValue" />
+    <result column="is_dc_delivery" jdbcType="BIT" property="isDcDelivery" />
+    <result column="is_supplier_delivery" jdbcType="BIT" property="isSupplierDelivery" />
+    <result column="life_status" jdbcType="BIT" property="lifeStatus" />
+    <result column="dc_life_status" jdbcType="BIT" property="dcLifeStatus" />
+    <result column="suggested_price" jdbcType="DECIMAL" property="suggestedPrice" />
+    <result column="minimum" jdbcType="INTEGER" property="minimum" />
+    <result column="cs_rate" jdbcType="DECIMAL" property="csRate" />
+    <result column="purchase_price" jdbcType="DECIMAL" property="purchasePrice" />
+    <result column="normal_price" jdbcType="DECIMAL" property="normalPrice" />
+    <result column="promot_no" jdbcType="VARCHAR" property="promotNo" />
+    <result column="promot_level" jdbcType="BIT" property="promotLevel" />
+    <result column="promot_class" jdbcType="BIT" property="promotClass" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="ins_dt" jdbcType="TIMESTAMP" property="insDt" />
+    <result column="mod_dt" jdbcType="TIMESTAMP" property="modDt" />
+    <result column="ins_usr_seq" jdbcType="VARCHAR" property="insUsrSeq" />
+    <result column="mod_usr_seq" jdbcType="VARCHAR" property="modUsrSeq" />
+    <result column="ins_usr_name" jdbcType="VARCHAR" property="insUsrName" />
+    <result column="mod_usr_name" jdbcType="VARCHAR" property="modUsrName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sku_code, sku_name, rt_category, supplier_no, dc_supplier_no, return_flag, is_artifical_quotation, 
+    is_dc_item, dc_attr_value, dsp_attr_value, is_dc_delivery, is_supplier_delivery, 
+    life_status, dc_life_status, suggested_price, minimum, cs_rate, purchase_price, normal_price, 
+    promot_no, promot_level, promot_class, status, ins_dt, mod_dt, ins_usr_seq, mod_usr_seq, 
+    ins_usr_name, mod_usr_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from zc_store_item
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from zc_store_item
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.feiniu.pmadmin.entity.ZcStoreItemEntity">
+    insert into zc_store_item (id, sku_code, sku_name, 
+      rt_category, supplier_no, dc_supplier_no, 
+      return_flag, is_artifical_quotation, is_dc_item, 
+      dc_attr_value, dsp_attr_value, is_dc_delivery, 
+      is_supplier_delivery, life_status, dc_life_status, 
+      suggested_price, minimum, cs_rate, 
+      purchase_price, normal_price, promot_no, 
+      promot_level, promot_class, status, 
+      ins_dt, mod_dt, ins_usr_seq, 
+      mod_usr_seq, ins_usr_name, mod_usr_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{skuCode,jdbcType=VARCHAR}, #{skuName,jdbcType=VARCHAR}, 
+      #{rtCategory,jdbcType=VARCHAR}, #{supplierNo,jdbcType=VARCHAR}, #{dcSupplierNo,jdbcType=VARCHAR}, 
+      #{returnFlag,jdbcType=BIT}, #{isArtificalQuotation,jdbcType=BIT}, #{isDcItem,jdbcType=BIT}, 
+      #{dcAttrValue,jdbcType=TINYINT}, #{dspAttrValue,jdbcType=TINYINT}, #{isDcDelivery,jdbcType=BIT}, 
+      #{isSupplierDelivery,jdbcType=BIT}, #{lifeStatus,jdbcType=BIT}, #{dcLifeStatus,jdbcType=BIT}, 
+      #{suggestedPrice,jdbcType=DECIMAL}, #{minimum,jdbcType=INTEGER}, #{csRate,jdbcType=DECIMAL}, 
+      #{purchasePrice,jdbcType=DECIMAL}, #{normalPrice,jdbcType=DECIMAL}, #{promotNo,jdbcType=VARCHAR}, 
+      #{promotLevel,jdbcType=BIT}, #{promotClass,jdbcType=BIT}, #{status,jdbcType=BIT}, 
+      #{insDt,jdbcType=TIMESTAMP}, #{modDt,jdbcType=TIMESTAMP}, #{insUsrSeq,jdbcType=VARCHAR}, 
+      #{modUsrSeq,jdbcType=VARCHAR}, #{insUsrName,jdbcType=VARCHAR}, #{modUsrName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.feiniu.pmadmin.entity.ZcStoreItemEntity">
+    insert into zc_store_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="skuCode != null">
+        sku_code,
+      </if>
+      <if test="skuName != null">
+        sku_name,
+      </if>
+      <if test="rtCategory != null">
+        rt_category,
+      </if>
+      <if test="supplierNo != null">
+        supplier_no,
+      </if>
+      <if test="dcSupplierNo != null">
+        dc_supplier_no,
+      </if>
+      <if test="returnFlag != null">
+        return_flag,
+      </if>
+      <if test="isArtificalQuotation != null">
+        is_artifical_quotation,
+      </if>
+      <if test="isDcItem != null">
+        is_dc_item,
+      </if>
+      <if test="dcAttrValue != null">
+        dc_attr_value,
+      </if>
+      <if test="dspAttrValue != null">
+        dsp_attr_value,
+      </if>
+      <if test="isDcDelivery != null">
+        is_dc_delivery,
+      </if>
+      <if test="isSupplierDelivery != null">
+        is_supplier_delivery,
+      </if>
+      <if test="lifeStatus != null">
+        life_status,
+      </if>
+      <if test="dcLifeStatus != null">
+        dc_life_status,
+      </if>
+      <if test="suggestedPrice != null">
+        suggested_price,
+      </if>
+      <if test="minimum != null">
+        minimum,
+      </if>
+      <if test="csRate != null">
+        cs_rate,
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price,
+      </if>
+      <if test="normalPrice != null">
+        normal_price,
+      </if>
+      <if test="promotNo != null">
+        promot_no,
+      </if>
+      <if test="promotLevel != null">
+        promot_level,
+      </if>
+      <if test="promotClass != null">
+        promot_class,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="insDt != null">
+        ins_dt,
+      </if>
+      <if test="modDt != null">
+        mod_dt,
+      </if>
+      <if test="insUsrSeq != null">
+        ins_usr_seq,
+      </if>
+      <if test="modUsrSeq != null">
+        mod_usr_seq,
+      </if>
+      <if test="insUsrName != null">
+        ins_usr_name,
+      </if>
+      <if test="modUsrName != null">
+        mod_usr_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="skuCode != null">
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null">
+        #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="rtCategory != null">
+        #{rtCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dcSupplierNo != null">
+        #{dcSupplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="returnFlag != null">
+        #{returnFlag,jdbcType=BIT},
+      </if>
+      <if test="isArtificalQuotation != null">
+        #{isArtificalQuotation,jdbcType=BIT},
+      </if>
+      <if test="isDcItem != null">
+        #{isDcItem,jdbcType=BIT},
+      </if>
+      <if test="dcAttrValue != null">
+        #{dcAttrValue,jdbcType=TINYINT},
+      </if>
+      <if test="dspAttrValue != null">
+        #{dspAttrValue,jdbcType=TINYINT},
+      </if>
+      <if test="isDcDelivery != null">
+        #{isDcDelivery,jdbcType=BIT},
+      </if>
+      <if test="isSupplierDelivery != null">
+        #{isSupplierDelivery,jdbcType=BIT},
+      </if>
+      <if test="lifeStatus != null">
+        #{lifeStatus,jdbcType=BIT},
+      </if>
+      <if test="dcLifeStatus != null">
+        #{dcLifeStatus,jdbcType=BIT},
+      </if>
+      <if test="suggestedPrice != null">
+        #{suggestedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="minimum != null">
+        #{minimum,jdbcType=INTEGER},
+      </if>
+      <if test="csRate != null">
+        #{csRate,jdbcType=DECIMAL},
+      </if>
+      <if test="purchasePrice != null">
+        #{purchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="normalPrice != null">
+        #{normalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotNo != null">
+        #{promotNo,jdbcType=VARCHAR},
+      </if>
+      <if test="promotLevel != null">
+        #{promotLevel,jdbcType=BIT},
+      </if>
+      <if test="promotClass != null">
+        #{promotClass,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="insDt != null">
+        #{insDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDt != null">
+        #{modDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUsrSeq != null">
+        #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrSeq != null">
+        #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="insUsrName != null">
+        #{insUsrName,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrName != null">
+        #{modUsrName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.feiniu.pmadmin.entity.ZcStoreItemEntity">
+    update zc_store_item
+    <set>
+      <if test="skuCode != null">
+        sku_code = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="skuName != null">
+        sku_name = #{skuName,jdbcType=VARCHAR},
+      </if>
+      <if test="rtCategory != null">
+        rt_category = #{rtCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierNo != null">
+        supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dcSupplierNo != null">
+        dc_supplier_no = #{dcSupplierNo,jdbcType=VARCHAR},
+      </if>
+      <if test="returnFlag != null">
+        return_flag = #{returnFlag,jdbcType=BIT},
+      </if>
+      <if test="isArtificalQuotation != null">
+        is_artifical_quotation = #{isArtificalQuotation,jdbcType=BIT},
+      </if>
+      <if test="isDcItem != null">
+        is_dc_item = #{isDcItem,jdbcType=BIT},
+      </if>
+      <if test="dcAttrValue != null">
+        dc_attr_value = #{dcAttrValue,jdbcType=TINYINT},
+      </if>
+      <if test="dspAttrValue != null">
+        dsp_attr_value = #{dspAttrValue,jdbcType=TINYINT},
+      </if>
+      <if test="isDcDelivery != null">
+        is_dc_delivery = #{isDcDelivery,jdbcType=BIT},
+      </if>
+      <if test="isSupplierDelivery != null">
+        is_supplier_delivery = #{isSupplierDelivery,jdbcType=BIT},
+      </if>
+      <if test="lifeStatus != null">
+        life_status = #{lifeStatus,jdbcType=BIT},
+      </if>
+      <if test="dcLifeStatus != null">
+        dc_life_status = #{dcLifeStatus,jdbcType=BIT},
+      </if>
+      <if test="suggestedPrice != null">
+        suggested_price = #{suggestedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="minimum != null">
+        minimum = #{minimum,jdbcType=INTEGER},
+      </if>
+      <if test="csRate != null">
+        cs_rate = #{csRate,jdbcType=DECIMAL},
+      </if>
+      <if test="purchasePrice != null">
+        purchase_price = #{purchasePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="normalPrice != null">
+        normal_price = #{normalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="promotNo != null">
+        promot_no = #{promotNo,jdbcType=VARCHAR},
+      </if>
+      <if test="promotLevel != null">
+        promot_level = #{promotLevel,jdbcType=BIT},
+      </if>
+      <if test="promotClass != null">
+        promot_class = #{promotClass,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="insDt != null">
+        ins_dt = #{insDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modDt != null">
+        mod_dt = #{modDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="insUsrSeq != null">
+        ins_usr_seq = #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrSeq != null">
+        mod_usr_seq = #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="insUsrName != null">
+        ins_usr_name = #{insUsrName,jdbcType=VARCHAR},
+      </if>
+      <if test="modUsrName != null">
+        mod_usr_name = #{modUsrName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.ZcStoreItemEntity">
+    update zc_store_item
+    set sku_code = #{skuCode,jdbcType=VARCHAR},
+      sku_name = #{skuName,jdbcType=VARCHAR},
+      rt_category = #{rtCategory,jdbcType=VARCHAR},
+      supplier_no = #{supplierNo,jdbcType=VARCHAR},
+      dc_supplier_no = #{dcSupplierNo,jdbcType=VARCHAR},
+      return_flag = #{returnFlag,jdbcType=BIT},
+      is_artifical_quotation = #{isArtificalQuotation,jdbcType=BIT},
+      is_dc_item = #{isDcItem,jdbcType=BIT},
+      dc_attr_value = #{dcAttrValue,jdbcType=TINYINT},
+      dsp_attr_value = #{dspAttrValue,jdbcType=TINYINT},
+      is_dc_delivery = #{isDcDelivery,jdbcType=BIT},
+      is_supplier_delivery = #{isSupplierDelivery,jdbcType=BIT},
+      life_status = #{lifeStatus,jdbcType=BIT},
+      dc_life_status = #{dcLifeStatus,jdbcType=BIT},
+      suggested_price = #{suggestedPrice,jdbcType=DECIMAL},
+      minimum = #{minimum,jdbcType=INTEGER},
+      cs_rate = #{csRate,jdbcType=DECIMAL},
+      purchase_price = #{purchasePrice,jdbcType=DECIMAL},
+      normal_price = #{normalPrice,jdbcType=DECIMAL},
+      promot_no = #{promotNo,jdbcType=VARCHAR},
+      promot_level = #{promotLevel,jdbcType=BIT},
+      promot_class = #{promotClass,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      ins_dt = #{insDt,jdbcType=TIMESTAMP},
+      mod_dt = #{modDt,jdbcType=TIMESTAMP},
+      ins_usr_seq = #{insUsrSeq,jdbcType=VARCHAR},
+      mod_usr_seq = #{modUsrSeq,jdbcType=VARCHAR},
+      ins_usr_name = #{insUsrName,jdbcType=VARCHAR},
+      mod_usr_name = #{modUsrName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

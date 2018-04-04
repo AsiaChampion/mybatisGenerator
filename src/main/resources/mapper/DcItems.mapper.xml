@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniu.pmadmin.dao.IDcItemsDao">
+  <resultMap id="BaseResultMap" type="com.feiniu.pmadmin.entity.DcItemsEntity">
+    <id column="ITEM_NO" jdbcType="DECIMAL" property="itemNo" />
+    <result column="SUP_NO" jdbcType="DECIMAL" property="supNo" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="OM" jdbcType="DECIMAL" property="om" />
+    <result column="OM_LENGTH" jdbcType="DECIMAL" property="omLength" />
+    <result column="OM_WIDTH" jdbcType="DECIMAL" property="omWidth" />
+    <result column="OM_HEIGHT" jdbcType="DECIMAL" property="omHeight" />
+    <result column="OM_WEIGHT" jdbcType="DECIMAL" property="omWeight" />
+    <result column="OP" jdbcType="DECIMAL" property="op" />
+    <result column="OP_LENGTH" jdbcType="DECIMAL" property="opLength" />
+    <result column="OP_WIDTH" jdbcType="DECIMAL" property="opWidth" />
+    <result column="OP_HEIGHT" jdbcType="DECIMAL" property="opHeight" />
+    <result column="OP_WEIGHT" jdbcType="DECIMAL" property="opWeight" />
+    <result column="OT" jdbcType="DECIMAL" property="ot" />
+    <result column="OT_LENGTH" jdbcType="DECIMAL" property="otLength" />
+    <result column="OT_WIDTH" jdbcType="DECIMAL" property="otWidth" />
+    <result column="OT_HEIGHT" jdbcType="DECIMAL" property="otHeight" />
+    <result column="OT_WEIGHT" jdbcType="DECIMAL" property="otWeight" />
+    <result column="TI" jdbcType="DECIMAL" property="ti" />
+    <result column="HI" jdbcType="DECIMAL" property="hi" />
+    <result column="SAFE_DAYS" jdbcType="DECIMAL" property="safeDays" />
+    <result column="SAFE_QTY" jdbcType="DECIMAL" property="safeQty" />
+    <result column="MIN_ORD_QTY" jdbcType="DECIMAL" property="minOrdQty" />
+    <result column="MAX_ORD_QTY" jdbcType="DECIMAL" property="maxOrdQty" />
+    <result column="IS_RTN" jdbcType="DECIMAL" property="isRtn" />
+    <result column="IS_CROSS_DOCK" jdbcType="DECIMAL" property="isCrossDock" />
+    <result column="KEEP_DAYS" jdbcType="DECIMAL" property="keepDays" />
+    <result column="RCV_KEEP_DAYS" jdbcType="DECIMAL" property="rcvKeepDays" />
+    <result column="SHIP_KEEP_DAYS" jdbcType="DECIMAL" property="shipKeepDays" />
+    <result column="LACK_DATE_FM" jdbcType="DATE" property="lackDateFm" />
+    <result column="LACK_DATE_TO" jdbcType="DATE" property="lackDateTo" />
+    <result column="DELE_DATE_FM" jdbcType="DATE" property="deleDateFm" />
+    <result column="DELE_DATE_TO" jdbcType="DATE" property="deleDateTo" />
+    <result column="CREATED_DATE" jdbcType="DATE" property="createdDate" />
+    <result column="CHANGED_DATE" jdbcType="DATE" property="changedDate" />
+    <result column="DELETED_DATE" jdbcType="DATE" property="deletedDate" />
+    <result column="USR" jdbcType="VARCHAR" property="usr" />
+    <result column="APPLY_DATE" jdbcType="DATE" property="applyDate" />
+    <result column="OPL_NEXT" jdbcType="DATE" property="oplNext" />
+    <result column="ABCD_TYPE" jdbcType="VARCHAR" property="abcdType" />
+    <result column="SPEC" jdbcType="VARCHAR" property="spec" />
+    <result column="OT_X" jdbcType="DECIMAL" property="otX" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="DSP_ATTR" jdbcType="DECIMAL" property="dspAttr" />
+    <result column="IS_EXCLUDE_XD" jdbcType="DECIMAL" property="isExcludeXd" />
+    <result column="WH_ID" jdbcType="DECIMAL" property="whId" />
+    <result column="MEMO" jdbcType="VARCHAR" property="memo" />
+    <result column="SUP_NO_2ST" jdbcType="DECIMAL" property="supNo2st" />
+    <result column="FL_WH_ID" jdbcType="DECIMAL" property="flWhId" />
+    <result column="DSP_SUP_NO" jdbcType="DECIMAL" property="dspSupNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ITEM_NO, SUP_NO, LOCATION, OM, OM_LENGTH, OM_WIDTH, OM_HEIGHT, OM_WEIGHT, OP, OP_LENGTH, 
+    OP_WIDTH, OP_HEIGHT, OP_WEIGHT, OT, OT_LENGTH, OT_WIDTH, OT_HEIGHT, OT_WEIGHT, TI, 
+    HI, SAFE_DAYS, SAFE_QTY, MIN_ORD_QTY, MAX_ORD_QTY, IS_RTN, IS_CROSS_DOCK, KEEP_DAYS, 
+    RCV_KEEP_DAYS, SHIP_KEEP_DAYS, LACK_DATE_FM, LACK_DATE_TO, DELE_DATE_FM, DELE_DATE_TO, 
+    CREATED_DATE, CHANGED_DATE, DELETED_DATE, USR, APPLY_DATE, OPL_NEXT, ABCD_TYPE, SPEC, 
+    OT_X, STATUS, DSP_ATTR, IS_EXCLUDE_XD, WH_ID, MEMO, SUP_NO_2ST, FL_WH_ID, DSP_SUP_NO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STDBA.DC_ITEMS
+    where ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from STDBA.DC_ITEMS
+    where ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.feiniu.pmadmin.entity.DcItemsEntity">
+    insert into STDBA.DC_ITEMS (ITEM_NO, SUP_NO, LOCATION, 
+      OM, OM_LENGTH, OM_WIDTH, 
+      OM_HEIGHT, OM_WEIGHT, OP, 
+      OP_LENGTH, OP_WIDTH, OP_HEIGHT, 
+      OP_WEIGHT, OT, OT_LENGTH, 
+      OT_WIDTH, OT_HEIGHT, OT_WEIGHT, 
+      TI, HI, SAFE_DAYS, SAFE_QTY, 
+      MIN_ORD_QTY, MAX_ORD_QTY, IS_RTN, 
+      IS_CROSS_DOCK, KEEP_DAYS, RCV_KEEP_DAYS, 
+      SHIP_KEEP_DAYS, LACK_DATE_FM, LACK_DATE_TO, 
+      DELE_DATE_FM, DELE_DATE_TO, CREATED_DATE, 
+      CHANGED_DATE, DELETED_DATE, USR, 
+      APPLY_DATE, OPL_NEXT, ABCD_TYPE, 
+      SPEC, OT_X, STATUS, 
+      DSP_ATTR, IS_EXCLUDE_XD, WH_ID, 
+      MEMO, SUP_NO_2ST, FL_WH_ID, 
+      DSP_SUP_NO)
+    values (#{itemNo,jdbcType=DECIMAL}, #{supNo,jdbcType=DECIMAL}, #{location,jdbcType=VARCHAR}, 
+      #{om,jdbcType=DECIMAL}, #{omLength,jdbcType=DECIMAL}, #{omWidth,jdbcType=DECIMAL}, 
+      #{omHeight,jdbcType=DECIMAL}, #{omWeight,jdbcType=DECIMAL}, #{op,jdbcType=DECIMAL}, 
+      #{opLength,jdbcType=DECIMAL}, #{opWidth,jdbcType=DECIMAL}, #{opHeight,jdbcType=DECIMAL}, 
+      #{opWeight,jdbcType=DECIMAL}, #{ot,jdbcType=DECIMAL}, #{otLength,jdbcType=DECIMAL}, 
+      #{otWidth,jdbcType=DECIMAL}, #{otHeight,jdbcType=DECIMAL}, #{otWeight,jdbcType=DECIMAL}, 
+      #{ti,jdbcType=DECIMAL}, #{hi,jdbcType=DECIMAL}, #{safeDays,jdbcType=DECIMAL}, #{safeQty,jdbcType=DECIMAL}, 
+      #{minOrdQty,jdbcType=DECIMAL}, #{maxOrdQty,jdbcType=DECIMAL}, #{isRtn,jdbcType=DECIMAL}, 
+      #{isCrossDock,jdbcType=DECIMAL}, #{keepDays,jdbcType=DECIMAL}, #{rcvKeepDays,jdbcType=DECIMAL}, 
+      #{shipKeepDays,jdbcType=DECIMAL}, #{lackDateFm,jdbcType=DATE}, #{lackDateTo,jdbcType=DATE}, 
+      #{deleDateFm,jdbcType=DATE}, #{deleDateTo,jdbcType=DATE}, #{createdDate,jdbcType=DATE}, 
+      #{changedDate,jdbcType=DATE}, #{deletedDate,jdbcType=DATE}, #{usr,jdbcType=VARCHAR}, 
+      #{applyDate,jdbcType=DATE}, #{oplNext,jdbcType=DATE}, #{abcdType,jdbcType=VARCHAR}, 
+      #{spec,jdbcType=VARCHAR}, #{otX,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, 
+      #{dspAttr,jdbcType=DECIMAL}, #{isExcludeXd,jdbcType=DECIMAL}, #{whId,jdbcType=DECIMAL}, 
+      #{memo,jdbcType=VARCHAR}, #{supNo2st,jdbcType=DECIMAL}, #{flWhId,jdbcType=DECIMAL}, 
+      #{dspSupNo,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.feiniu.pmadmin.entity.DcItemsEntity">
+    insert into STDBA.DC_ITEMS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemNo != null">
+        ITEM_NO,
+      </if>
+      <if test="supNo != null">
+        SUP_NO,
+      </if>
+      <if test="location != null">
+        LOCATION,
+      </if>
+      <if test="om != null">
+        OM,
+      </if>
+      <if test="omLength != null">
+        OM_LENGTH,
+      </if>
+      <if test="omWidth != null">
+        OM_WIDTH,
+      </if>
+      <if test="omHeight != null">
+        OM_HEIGHT,
+      </if>
+      <if test="omWeight != null">
+        OM_WEIGHT,
+      </if>
+      <if test="op != null">
+        OP,
+      </if>
+      <if test="opLength != null">
+        OP_LENGTH,
+      </if>
+      <if test="opWidth != null">
+        OP_WIDTH,
+      </if>
+      <if test="opHeight != null">
+        OP_HEIGHT,
+      </if>
+      <if test="opWeight != null">
+        OP_WEIGHT,
+      </if>
+      <if test="ot != null">
+        OT,
+      </if>
+      <if test="otLength != null">
+        OT_LENGTH,
+      </if>
+      <if test="otWidth != null">
+        OT_WIDTH,
+      </if>
+      <if test="otHeight != null">
+        OT_HEIGHT,
+      </if>
+      <if test="otWeight != null">
+        OT_WEIGHT,
+      </if>
+      <if test="ti != null">
+        TI,
+      </if>
+      <if test="hi != null">
+        HI,
+      </if>
+      <if test="safeDays != null">
+        SAFE_DAYS,
+      </if>
+      <if test="safeQty != null">
+        SAFE_QTY,
+      </if>
+      <if test="minOrdQty != null">
+        MIN_ORD_QTY,
+      </if>
+      <if test="maxOrdQty != null">
+        MAX_ORD_QTY,
+      </if>
+      <if test="isRtn != null">
+        IS_RTN,
+      </if>
+      <if test="isCrossDock != null">
+        IS_CROSS_DOCK,
+      </if>
+      <if test="keepDays != null">
+        KEEP_DAYS,
+      </if>
+      <if test="rcvKeepDays != null">
+        RCV_KEEP_DAYS,
+      </if>
+      <if test="shipKeepDays != null">
+        SHIP_KEEP_DAYS,
+      </if>
+      <if test="lackDateFm != null">
+        LACK_DATE_FM,
+      </if>
+      <if test="lackDateTo != null">
+        LACK_DATE_TO,
+      </if>
+      <if test="deleDateFm != null">
+        DELE_DATE_FM,
+      </if>
+      <if test="deleDateTo != null">
+        DELE_DATE_TO,
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE,
+      </if>
+      <if test="changedDate != null">
+        CHANGED_DATE,
+      </if>
+      <if test="deletedDate != null">
+        DELETED_DATE,
+      </if>
+      <if test="usr != null">
+        USR,
+      </if>
+      <if test="applyDate != null">
+        APPLY_DATE,
+      </if>
+      <if test="oplNext != null">
+        OPL_NEXT,
+      </if>
+      <if test="abcdType != null">
+        ABCD_TYPE,
+      </if>
+      <if test="spec != null">
+        SPEC,
+      </if>
+      <if test="otX != null">
+        OT_X,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="dspAttr != null">
+        DSP_ATTR,
+      </if>
+      <if test="isExcludeXd != null">
+        IS_EXCLUDE_XD,
+      </if>
+      <if test="whId != null">
+        WH_ID,
+      </if>
+      <if test="memo != null">
+        MEMO,
+      </if>
+      <if test="supNo2st != null">
+        SUP_NO_2ST,
+      </if>
+      <if test="flWhId != null">
+        FL_WH_ID,
+      </if>
+      <if test="dspSupNo != null">
+        DSP_SUP_NO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemNo != null">
+        #{itemNo,jdbcType=DECIMAL},
+      </if>
+      <if test="supNo != null">
+        #{supNo,jdbcType=DECIMAL},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="om != null">
+        #{om,jdbcType=DECIMAL},
+      </if>
+      <if test="omLength != null">
+        #{omLength,jdbcType=DECIMAL},
+      </if>
+      <if test="omWidth != null">
+        #{omWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="omHeight != null">
+        #{omHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="omWeight != null">
+        #{omWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="op != null">
+        #{op,jdbcType=DECIMAL},
+      </if>
+      <if test="opLength != null">
+        #{opLength,jdbcType=DECIMAL},
+      </if>
+      <if test="opWidth != null">
+        #{opWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="opHeight != null">
+        #{opHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="opWeight != null">
+        #{opWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ot != null">
+        #{ot,jdbcType=DECIMAL},
+      </if>
+      <if test="otLength != null">
+        #{otLength,jdbcType=DECIMAL},
+      </if>
+      <if test="otWidth != null">
+        #{otWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="otHeight != null">
+        #{otHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="otWeight != null">
+        #{otWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ti != null">
+        #{ti,jdbcType=DECIMAL},
+      </if>
+      <if test="hi != null">
+        #{hi,jdbcType=DECIMAL},
+      </if>
+      <if test="safeDays != null">
+        #{safeDays,jdbcType=DECIMAL},
+      </if>
+      <if test="safeQty != null">
+        #{safeQty,jdbcType=DECIMAL},
+      </if>
+      <if test="minOrdQty != null">
+        #{minOrdQty,jdbcType=DECIMAL},
+      </if>
+      <if test="maxOrdQty != null">
+        #{maxOrdQty,jdbcType=DECIMAL},
+      </if>
+      <if test="isRtn != null">
+        #{isRtn,jdbcType=DECIMAL},
+      </if>
+      <if test="isCrossDock != null">
+        #{isCrossDock,jdbcType=DECIMAL},
+      </if>
+      <if test="keepDays != null">
+        #{keepDays,jdbcType=DECIMAL},
+      </if>
+      <if test="rcvKeepDays != null">
+        #{rcvKeepDays,jdbcType=DECIMAL},
+      </if>
+      <if test="shipKeepDays != null">
+        #{shipKeepDays,jdbcType=DECIMAL},
+      </if>
+      <if test="lackDateFm != null">
+        #{lackDateFm,jdbcType=DATE},
+      </if>
+      <if test="lackDateTo != null">
+        #{lackDateTo,jdbcType=DATE},
+      </if>
+      <if test="deleDateFm != null">
+        #{deleDateFm,jdbcType=DATE},
+      </if>
+      <if test="deleDateTo != null">
+        #{deleDateTo,jdbcType=DATE},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="changedDate != null">
+        #{changedDate,jdbcType=DATE},
+      </if>
+      <if test="deletedDate != null">
+        #{deletedDate,jdbcType=DATE},
+      </if>
+      <if test="usr != null">
+        #{usr,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null">
+        #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="oplNext != null">
+        #{oplNext,jdbcType=DATE},
+      </if>
+      <if test="abcdType != null">
+        #{abcdType,jdbcType=VARCHAR},
+      </if>
+      <if test="spec != null">
+        #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="otX != null">
+        #{otX,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dspAttr != null">
+        #{dspAttr,jdbcType=DECIMAL},
+      </if>
+      <if test="isExcludeXd != null">
+        #{isExcludeXd,jdbcType=DECIMAL},
+      </if>
+      <if test="whId != null">
+        #{whId,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="supNo2st != null">
+        #{supNo2st,jdbcType=DECIMAL},
+      </if>
+      <if test="flWhId != null">
+        #{flWhId,jdbcType=DECIMAL},
+      </if>
+      <if test="dspSupNo != null">
+        #{dspSupNo,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.feiniu.pmadmin.entity.DcItemsEntity">
+    update STDBA.DC_ITEMS
+    <set>
+      <if test="supNo != null">
+        SUP_NO = #{supNo,jdbcType=DECIMAL},
+      </if>
+      <if test="location != null">
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="om != null">
+        OM = #{om,jdbcType=DECIMAL},
+      </if>
+      <if test="omLength != null">
+        OM_LENGTH = #{omLength,jdbcType=DECIMAL},
+      </if>
+      <if test="omWidth != null">
+        OM_WIDTH = #{omWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="omHeight != null">
+        OM_HEIGHT = #{omHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="omWeight != null">
+        OM_WEIGHT = #{omWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="op != null">
+        OP = #{op,jdbcType=DECIMAL},
+      </if>
+      <if test="opLength != null">
+        OP_LENGTH = #{opLength,jdbcType=DECIMAL},
+      </if>
+      <if test="opWidth != null">
+        OP_WIDTH = #{opWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="opHeight != null">
+        OP_HEIGHT = #{opHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="opWeight != null">
+        OP_WEIGHT = #{opWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ot != null">
+        OT = #{ot,jdbcType=DECIMAL},
+      </if>
+      <if test="otLength != null">
+        OT_LENGTH = #{otLength,jdbcType=DECIMAL},
+      </if>
+      <if test="otWidth != null">
+        OT_WIDTH = #{otWidth,jdbcType=DECIMAL},
+      </if>
+      <if test="otHeight != null">
+        OT_HEIGHT = #{otHeight,jdbcType=DECIMAL},
+      </if>
+      <if test="otWeight != null">
+        OT_WEIGHT = #{otWeight,jdbcType=DECIMAL},
+      </if>
+      <if test="ti != null">
+        TI = #{ti,jdbcType=DECIMAL},
+      </if>
+      <if test="hi != null">
+        HI = #{hi,jdbcType=DECIMAL},
+      </if>
+      <if test="safeDays != null">
+        SAFE_DAYS = #{safeDays,jdbcType=DECIMAL},
+      </if>
+      <if test="safeQty != null">
+        SAFE_QTY = #{safeQty,jdbcType=DECIMAL},
+      </if>
+      <if test="minOrdQty != null">
+        MIN_ORD_QTY = #{minOrdQty,jdbcType=DECIMAL},
+      </if>
+      <if test="maxOrdQty != null">
+        MAX_ORD_QTY = #{maxOrdQty,jdbcType=DECIMAL},
+      </if>
+      <if test="isRtn != null">
+        IS_RTN = #{isRtn,jdbcType=DECIMAL},
+      </if>
+      <if test="isCrossDock != null">
+        IS_CROSS_DOCK = #{isCrossDock,jdbcType=DECIMAL},
+      </if>
+      <if test="keepDays != null">
+        KEEP_DAYS = #{keepDays,jdbcType=DECIMAL},
+      </if>
+      <if test="rcvKeepDays != null">
+        RCV_KEEP_DAYS = #{rcvKeepDays,jdbcType=DECIMAL},
+      </if>
+      <if test="shipKeepDays != null">
+        SHIP_KEEP_DAYS = #{shipKeepDays,jdbcType=DECIMAL},
+      </if>
+      <if test="lackDateFm != null">
+        LACK_DATE_FM = #{lackDateFm,jdbcType=DATE},
+      </if>
+      <if test="lackDateTo != null">
+        LACK_DATE_TO = #{lackDateTo,jdbcType=DATE},
+      </if>
+      <if test="deleDateFm != null">
+        DELE_DATE_FM = #{deleDateFm,jdbcType=DATE},
+      </if>
+      <if test="deleDateTo != null">
+        DELE_DATE_TO = #{deleDateTo,jdbcType=DATE},
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE = #{createdDate,jdbcType=DATE},
+      </if>
+      <if test="changedDate != null">
+        CHANGED_DATE = #{changedDate,jdbcType=DATE},
+      </if>
+      <if test="deletedDate != null">
+        DELETED_DATE = #{deletedDate,jdbcType=DATE},
+      </if>
+      <if test="usr != null">
+        USR = #{usr,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null">
+        APPLY_DATE = #{applyDate,jdbcType=DATE},
+      </if>
+      <if test="oplNext != null">
+        OPL_NEXT = #{oplNext,jdbcType=DATE},
+      </if>
+      <if test="abcdType != null">
+        ABCD_TYPE = #{abcdType,jdbcType=VARCHAR},
+      </if>
+      <if test="spec != null">
+        SPEC = #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="otX != null">
+        OT_X = #{otX,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="dspAttr != null">
+        DSP_ATTR = #{dspAttr,jdbcType=DECIMAL},
+      </if>
+      <if test="isExcludeXd != null">
+        IS_EXCLUDE_XD = #{isExcludeXd,jdbcType=DECIMAL},
+      </if>
+      <if test="whId != null">
+        WH_ID = #{whId,jdbcType=DECIMAL},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="supNo2st != null">
+        SUP_NO_2ST = #{supNo2st,jdbcType=DECIMAL},
+      </if>
+      <if test="flWhId != null">
+        FL_WH_ID = #{flWhId,jdbcType=DECIMAL},
+      </if>
+      <if test="dspSupNo != null">
+        DSP_SUP_NO = #{dspSupNo,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.DcItemsEntity">
+    update STDBA.DC_ITEMS
+    set SUP_NO = #{supNo,jdbcType=DECIMAL},
+      LOCATION = #{location,jdbcType=VARCHAR},
+      OM = #{om,jdbcType=DECIMAL},
+      OM_LENGTH = #{omLength,jdbcType=DECIMAL},
+      OM_WIDTH = #{omWidth,jdbcType=DECIMAL},
+      OM_HEIGHT = #{omHeight,jdbcType=DECIMAL},
+      OM_WEIGHT = #{omWeight,jdbcType=DECIMAL},
+      OP = #{op,jdbcType=DECIMAL},
+      OP_LENGTH = #{opLength,jdbcType=DECIMAL},
+      OP_WIDTH = #{opWidth,jdbcType=DECIMAL},
+      OP_HEIGHT = #{opHeight,jdbcType=DECIMAL},
+      OP_WEIGHT = #{opWeight,jdbcType=DECIMAL},
+      OT = #{ot,jdbcType=DECIMAL},
+      OT_LENGTH = #{otLength,jdbcType=DECIMAL},
+      OT_WIDTH = #{otWidth,jdbcType=DECIMAL},
+      OT_HEIGHT = #{otHeight,jdbcType=DECIMAL},
+      OT_WEIGHT = #{otWeight,jdbcType=DECIMAL},
+      TI = #{ti,jdbcType=DECIMAL},
+      HI = #{hi,jdbcType=DECIMAL},
+      SAFE_DAYS = #{safeDays,jdbcType=DECIMAL},
+      SAFE_QTY = #{safeQty,jdbcType=DECIMAL},
+      MIN_ORD_QTY = #{minOrdQty,jdbcType=DECIMAL},
+      MAX_ORD_QTY = #{maxOrdQty,jdbcType=DECIMAL},
+      IS_RTN = #{isRtn,jdbcType=DECIMAL},
+      IS_CROSS_DOCK = #{isCrossDock,jdbcType=DECIMAL},
+      KEEP_DAYS = #{keepDays,jdbcType=DECIMAL},
+      RCV_KEEP_DAYS = #{rcvKeepDays,jdbcType=DECIMAL},
+      SHIP_KEEP_DAYS = #{shipKeepDays,jdbcType=DECIMAL},
+      LACK_DATE_FM = #{lackDateFm,jdbcType=DATE},
+      LACK_DATE_TO = #{lackDateTo,jdbcType=DATE},
+      DELE_DATE_FM = #{deleDateFm,jdbcType=DATE},
+      DELE_DATE_TO = #{deleDateTo,jdbcType=DATE},
+      CREATED_DATE = #{createdDate,jdbcType=DATE},
+      CHANGED_DATE = #{changedDate,jdbcType=DATE},
+      DELETED_DATE = #{deletedDate,jdbcType=DATE},
+      USR = #{usr,jdbcType=VARCHAR},
+      APPLY_DATE = #{applyDate,jdbcType=DATE},
+      OPL_NEXT = #{oplNext,jdbcType=DATE},
+      ABCD_TYPE = #{abcdType,jdbcType=VARCHAR},
+      SPEC = #{spec,jdbcType=VARCHAR},
+      OT_X = #{otX,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=VARCHAR},
+      DSP_ATTR = #{dspAttr,jdbcType=DECIMAL},
+      IS_EXCLUDE_XD = #{isExcludeXd,jdbcType=DECIMAL},
+      WH_ID = #{whId,jdbcType=DECIMAL},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      SUP_NO_2ST = #{supNo2st,jdbcType=DECIMAL},
+      FL_WH_ID = #{flWhId,jdbcType=DECIMAL},
+      DSP_SUP_NO = #{dspSupNo,jdbcType=DECIMAL}
+    where ITEM_NO = #{itemNo,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniu.pmadmin.dao.IStoreItemSuspendSellLogDao">
+  <resultMap id="BaseResultMap" type="com.feiniu.pmadmin.entity.StoreItemSuspendSellLogEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="seq_no" jdbcType="VARCHAR" property="seqNo" />
+    <result column="sku_code" jdbcType="VARCHAR" property="skuCode" />
+    <result column="store_id" jdbcType="VARCHAR" property="storeId" />
+    <result column="life_status" jdbcType="CHAR" property="lifeStatus" />
+    <result column="suspend_sell" jdbcType="CHAR" property="suspendSell" />
+    <result column="work_date" jdbcType="VARCHAR" property="workDate" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="msg" jdbcType="VARCHAR" property="msg" />
+    <result column="ins_usr_seq" jdbcType="VARCHAR" property="insUsrSeq" />
+    <result column="ins_dt" jdbcType="TIMESTAMP" property="insDt" />
+    <result column="mod_usr_seq" jdbcType="VARCHAR" property="modUsrSeq" />
+    <result column="mod_dt" jdbcType="TIMESTAMP" property="modDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, seq_no, sku_code, store_id, life_status, suspend_sell, work_date, status, msg, 
+    ins_usr_seq, ins_dt, mod_usr_seq, mod_dt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from store_item_suspend_sell_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from store_item_suspend_sell_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.feiniu.pmadmin.entity.StoreItemSuspendSellLogEntity">
+    insert into store_item_suspend_sell_log (id, seq_no, sku_code, 
+      store_id, life_status, suspend_sell, 
+      work_date, status, msg, 
+      ins_usr_seq, ins_dt, mod_usr_seq, 
+      mod_dt)
+    values (#{id,jdbcType=INTEGER}, #{seqNo,jdbcType=VARCHAR}, #{skuCode,jdbcType=VARCHAR}, 
+      #{storeId,jdbcType=VARCHAR}, #{lifeStatus,jdbcType=CHAR}, #{suspendSell,jdbcType=CHAR}, 
+      #{workDate,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{msg,jdbcType=VARCHAR}, 
+      #{insUsrSeq,jdbcType=VARCHAR}, #{insDt,jdbcType=TIMESTAMP}, #{modUsrSeq,jdbcType=VARCHAR}, 
+      #{modDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.feiniu.pmadmin.entity.StoreItemSuspendSellLogEntity">
+    insert into store_item_suspend_sell_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="seqNo != null">
+        seq_no,
+      </if>
+      <if test="skuCode != null">
+        sku_code,
+      </if>
+      <if test="storeId != null">
+        store_id,
+      </if>
+      <if test="lifeStatus != null">
+        life_status,
+      </if>
+      <if test="suspendSell != null">
+        suspend_sell,
+      </if>
+      <if test="workDate != null">
+        work_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="msg != null">
+        msg,
+      </if>
+      <if test="insUsrSeq != null">
+        ins_usr_seq,
+      </if>
+      <if test="insDt != null">
+        ins_dt,
+      </if>
+      <if test="modUsrSeq != null">
+        mod_usr_seq,
+      </if>
+      <if test="modDt != null">
+        mod_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="seqNo != null">
+        #{seqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCode != null">
+        #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeStatus != null">
+        #{lifeStatus,jdbcType=CHAR},
+      </if>
+      <if test="suspendSell != null">
+        #{suspendSell,jdbcType=CHAR},
+      </if>
+      <if test="workDate != null">
+        #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="insUsrSeq != null">
+        #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="insDt != null">
+        #{insDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modUsrSeq != null">
+        #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modDt != null">
+        #{modDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.feiniu.pmadmin.entity.StoreItemSuspendSellLogEntity">
+    update store_item_suspend_sell_log
+    <set>
+      <if test="seqNo != null">
+        seq_no = #{seqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="skuCode != null">
+        sku_code = #{skuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="storeId != null">
+        store_id = #{storeId,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeStatus != null">
+        life_status = #{lifeStatus,jdbcType=CHAR},
+      </if>
+      <if test="suspendSell != null">
+        suspend_sell = #{suspendSell,jdbcType=CHAR},
+      </if>
+      <if test="workDate != null">
+        work_date = #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
+      <if test="insUsrSeq != null">
+        ins_usr_seq = #{insUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="insDt != null">
+        ins_dt = #{insDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modUsrSeq != null">
+        mod_usr_seq = #{modUsrSeq,jdbcType=VARCHAR},
+      </if>
+      <if test="modDt != null">
+        mod_dt = #{modDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.StoreItemSuspendSellLogEntity">
+    update store_item_suspend_sell_log
+    set seq_no = #{seqNo,jdbcType=VARCHAR},
+      sku_code = #{skuCode,jdbcType=VARCHAR},
+      store_id = #{storeId,jdbcType=VARCHAR},
+      life_status = #{lifeStatus,jdbcType=CHAR},
+      suspend_sell = #{suspendSell,jdbcType=CHAR},
+      work_date = #{workDate,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      msg = #{msg,jdbcType=VARCHAR},
+      ins_usr_seq = #{insUsrSeq,jdbcType=VARCHAR},
+      ins_dt = #{insDt,jdbcType=TIMESTAMP},
+      mod_usr_seq = #{modUsrSeq,jdbcType=VARCHAR},
+      mod_dt = #{modDt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

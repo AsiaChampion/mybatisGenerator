@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feiniu.pmadmin.dao.IPromotionDao">
+  <resultMap id="BaseResultMap" type="com.feiniu.pmadmin.entity.PromotionEntity">
+    <id column="PROMOTION_NO" jdbcType="DECIMAL" property="promotionNo" />
+    <result column="BEGIN_DATE" jdbcType="DATE" property="beginDate" />
+    <result column="END_DATE" jdbcType="DATE" property="endDate" />
+    <result column="BUY_BEGIN_DATE" jdbcType="DATE" property="buyBeginDate" />
+    <result column="BUY_END_DATE" jdbcType="DATE" property="buyEndDate" />
+    <result column="MEMO" jdbcType="VARCHAR" property="memo" />
+    <result column="SP_STORE_NO" jdbcType="DECIMAL" property="spStoreNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PROMOTION_NO, BEGIN_DATE, END_DATE, BUY_BEGIN_DATE, BUY_END_DATE, MEMO, SP_STORE_NO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STDBA.PROMOTION
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from STDBA.PROMOTION
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.feiniu.pmadmin.entity.PromotionEntity">
+    insert into STDBA.PROMOTION (PROMOTION_NO, BEGIN_DATE, END_DATE, 
+      BUY_BEGIN_DATE, BUY_END_DATE, MEMO, 
+      SP_STORE_NO)
+    values (#{promotionNo,jdbcType=DECIMAL}, #{beginDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, 
+      #{buyBeginDate,jdbcType=DATE}, #{buyEndDate,jdbcType=DATE}, #{memo,jdbcType=VARCHAR}, 
+      #{spStoreNo,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.feiniu.pmadmin.entity.PromotionEntity">
+    insert into STDBA.PROMOTION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="promotionNo != null">
+        PROMOTION_NO,
+      </if>
+      <if test="beginDate != null">
+        BEGIN_DATE,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="buyBeginDate != null">
+        BUY_BEGIN_DATE,
+      </if>
+      <if test="buyEndDate != null">
+        BUY_END_DATE,
+      </if>
+      <if test="memo != null">
+        MEMO,
+      </if>
+      <if test="spStoreNo != null">
+        SP_STORE_NO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="promotionNo != null">
+        #{promotionNo,jdbcType=DECIMAL},
+      </if>
+      <if test="beginDate != null">
+        #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="buyBeginDate != null">
+        #{buyBeginDate,jdbcType=DATE},
+      </if>
+      <if test="buyEndDate != null">
+        #{buyEndDate,jdbcType=DATE},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="spStoreNo != null">
+        #{spStoreNo,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.feiniu.pmadmin.entity.PromotionEntity">
+    update STDBA.PROMOTION
+    <set>
+      <if test="beginDate != null">
+        BEGIN_DATE = #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="buyBeginDate != null">
+        BUY_BEGIN_DATE = #{buyBeginDate,jdbcType=DATE},
+      </if>
+      <if test="buyEndDate != null">
+        BUY_END_DATE = #{buyEndDate,jdbcType=DATE},
+      </if>
+      <if test="memo != null">
+        MEMO = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="spStoreNo != null">
+        SP_STORE_NO = #{spStoreNo,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.feiniu.pmadmin.entity.PromotionEntity">
+    update STDBA.PROMOTION
+    set BEGIN_DATE = #{beginDate,jdbcType=DATE},
+      END_DATE = #{endDate,jdbcType=DATE},
+      BUY_BEGIN_DATE = #{buyBeginDate,jdbcType=DATE},
+      BUY_END_DATE = #{buyEndDate,jdbcType=DATE},
+      MEMO = #{memo,jdbcType=VARCHAR},
+      SP_STORE_NO = #{spStoreNo,jdbcType=DECIMAL}
+    where PROMOTION_NO = #{promotionNo,jdbcType=DECIMAL}
+  </update>
+</mapper>
